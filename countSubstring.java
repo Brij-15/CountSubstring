@@ -7,6 +7,25 @@ public class CountSubstrings {
 	String name = null;
 	BufferedReader reader = new BufferedReader (new FileReader(name));
   public static int index = 0;
+  String pattern = "Javert";
+  String line = "";
+  LinkedList<Character> list = new LinkedList<Character>();
+  ArrayList<Character> AList = new ArrayList<Character>();
+  int occ1 = 0;
+  int occ2 = 0;
+  double listTimeE = 0, arrTimeE = 0;
+  double listTimeS = 0, arrTimeS = 0;
+
+  BufferedReader reader = new BufferedReader (text1);
+  line = reader.getLine();
+  listTimeS = System.currentTimeMillis();
+
+    while(line != null){
+      for(char c : line.toCharArray()){
+        list.add(c);
+      }
+    }
+
 	}
 
 
