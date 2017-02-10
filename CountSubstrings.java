@@ -27,20 +27,38 @@ public class CountSubstrings {
   FileReader fileRead = new FileReader (text1);
   BufferedReader reader = new BufferedReader(fileRead);
   line = reader.readLine();
-  listTimeS = System.currentTimeMillis();
+  arrTimeS = System.currentTimeMillis();
 
     while(line != null){ //adds line to ArrayList
       for(char c : line.toCharArray()){
         AList.add(c);
       }
-			occuranceA = occuranceA + patternFinder(AList,patternList, pattern, 0);
+			occuranceA = occuranceA + patternFinder(AList,patternArray, pattern, 0);
 			AList = new ArrayList<Character>();
 			line = reader.readLine();
     }
 		reader.close();
 		arrTimeE = System.currentTimeMillis();
-			System.out.println("Using ArrayList: "+occuranceA+" matches were found, derived in "+(arrTimeE - arrTimeS)+" milliseconds");
-	} //done arrayList checking
+
+		fileRead = new FileReader (text1); //reset to read files into linked list
+		reader = new BufferedReader (fileRead);
+		line = reader.readLine();
+		listTimeS = System.currentTimeMillis();
+
+		while(line != null){
+			for(char c : line.toCharArray()){
+				list.add(c);
+			}
+			occuranceL = occuranceL + patternFinder(list, patternList,pattern, 0);
+			list = new LinkedList<Character>();
+			line = reader.readLine();
+		}// inputs line into linked list
+		reader.close();
+		listTimeE = System.currentTimeMillis();
+
+		System.out.println("Using LinkedList: "+occuranceL+" matches were found, derived in "+(listTimeE - listTimeS)+" milliseconds");
+		System.out.println("Using ArrayList: "+occuranceA+" matches were found, derived in "+(arrTimeE - arrTimeS)+" milliseconds");
+	} //end main
 
 
 
